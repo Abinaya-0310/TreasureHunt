@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Your Avatar</title>
+  <link rel="stylesheet" href="AvatarSelectionPage.css"> <!-- Assuming the same CSS file -->
+</head>
+<body>
+  <div class="avatar-selection-page">
+    <h2>Select Your Avatar</h2>
+    <div class="avatar-cards">
+      <!-- Avatar Cards -->
+      <div class="avatar-card" onclick="selectAvatar('Jon Snow')">
+        <img src="JonSnow.png" alt="Jon Snow">
+        <p>Jon Snow</p>
+      </div>
+      <div class="avatar-card" onclick="selectAvatar('Targaryen')">
+        <img src="DaenerysTargaryen.png" alt="Targaryen">
+        <p>Targaryen</p>
+      </div>
+      <div class="avatar-card" onclick="selectAvatar('Alvar Spyre')">
+        <img src="alvarspyre.png" alt="Alvar Spyre">
+        <p>Alvar Spyre</p>
+      </div>
+      <div class="avatar-card" onclick="selectAvatar('Brynden Rivers')">
+        <img src="BryndenRivers.png" alt="Brynden Rivers">
+        <p>Brynden Rivers</p>
+      </div>
+    </div>
+    <button onclick="navigateToLogin()" class="back-button">Select</button>
+  </div>
+
+  <script>
+    function selectAvatar(name) {
+      console.log("Avatar selected:", name);
+      // Logic to handle avatar selection can be added here
+    }
+
+    function navigateToLogin() {
+      window.location.href = 'LoginPage.html'; // Navigate to the login page
+    }
+  </script>
+</body>
+</html>

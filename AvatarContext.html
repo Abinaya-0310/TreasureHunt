@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avatar Context Simulation</title>
+  <script>
+    // Simulate AvatarContext logic with JavaScript
+    let selectedAvatar = null;
+
+    function setSelectedAvatar(avatar) {
+      selectedAvatar = avatar;
+      console.log("Avatar selected:", selectedAvatar);
+    }
+
+    function getSelectedAvatar() {
+      return selectedAvatar;
+    }
+  </script>
+</head>
+<body>
+  <h2>Select an Avatar</h2>
+  
+  <!-- Avatar selection buttons -->
+  <div>
+    <button onclick="setSelectedAvatar('Jon Snow')">Select Jon Snow</button>
+    <button onclick="setSelectedAvatar('Targaryen')">Select Targaryen</button>
+    <button onclick="setSelectedAvatar('Alvar Spyre')">Select Alvar Spyre</button>
+    <button onclick="setSelectedAvatar('Brynden Rivers')">Select Brynden Rivers</button>
+  </div>
+  
+  <!-- Button to view the selected avatar -->
+  <div>
+    <button onclick="alert('Selected Avatar: ' + getSelectedAvatar())">Show Selected Avatar</button>
+  </div>
+</body>
+</html>

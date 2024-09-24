@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="LoginPage.css"> <!-- Assuming the same CSS file -->
+</head>
+<body>
+  <div class="login-page">
+    <video autoplay loop muted class="background-video">
+      <source src="Login_Vid.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="container">
+      <!-- Display the selected avatar at the top center -->
+      <div id="selected-avatar-top" class="selected-avatar-top" style="display: none;">
+        <img id="avatar-img" class="avatar-small-top" alt="Avatar">
+      </div>
+      <h1>Enter the Realm</h1>
+      <input type="text" placeholder="Username" class="username-input">
+      <input type="password" placeholder="Password" class="password-input">
+      <div class="buttons">
+        <button onclick="location.href='AvatarSelectionPage.html'" class="avatar-button">Select Avatar</button>
+        <button onclick="location.href='TimerPage.html'" class="login-button">Begin Your Quest</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Example of how you can load the avatar dynamically if needed
+    // You would set the selectedAvatar variable to match the user's selection
+    const selectedAvatar = {
+      name: 'Example Avatar',
+      smallImg: 'avatar-small-img.jpg' // Replace with actual avatar path
+    };
+
+    if (selectedAvatar) {
+      document.getElementById('selected-avatar-top').style.display = 'block';
+      document.getElementById('avatar-img').src = selectedAvatar.smallImg;
+      document.getElementById('avatar-img').alt = selectedAvatar.name;
+    }
+  </script>
+</body>
+</html>

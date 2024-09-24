@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timer Page</title>
+  <link rel="stylesheet" href="TimerPage.css"> <!-- Assuming the same CSS file -->
+</head>
+<body>
+  <div class="timer-page">
+    <div class="top-buttons">
+      <button onclick="location.href='map.html'" class="top-button1"></button>
+      <button onclick="location.href='leaderboard.html'" class="top-button2"></button>
+    </div>
+    <h1 class="Font">YOUR WATCH HAS NOW BEGUN</h1>
+    <div class="content">
+      <p id="timer" class="Font">02:00:00</p> <!-- Timer will update here -->
+      <button onclick="startGame()" class="game">Start</button>
+    </div>
+  </div>
+
+  <script>
+    let time = 7200; // 2 hours in seconds
+
+    function updateTimer() {
+      const timerElement = document.getElementById('timer');
+      const hours = Math.floor(time / 3600);
+      const minutes = Math.floor((time % 3600) / 60);
+      const secondsRemaining = time % 60;
+      timerElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secondsRemaining).padStart(2, '0')}`;
+
+      // Decrease time every second
+      if (time > 0) {
+        time--;
+      }
+    }
+
+    function startGame() {
+      window.location.href = `round.html?carriedTime=${time}`; // Navigate to the Round page with time
+    }
+
+    // Start the timer on page load
+    const intervalId = setInterval(updateTimer, 1000);
+
+    // Clear interval when leaving the page
+    window.addEventListener('beforeunload', () => {
+      clearInterval(intervalId);
+    });
+  </script>
+</body>
+</html>

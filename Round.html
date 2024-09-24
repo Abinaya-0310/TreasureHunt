@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Round 1</title>
+  <link rel="stylesheet" href="Round.css"> <!-- Assuming the same CSS file -->
+</head>
+<body>
+  <div class="round-1-page">
+    <div class="carried-timer" id="carried-timer">Main Event Timer: 02:00:00</div>
+    <div class="round1-timer" id="round1-timer">02:00</div>
+    <input
+      type="text"
+      id="visible-input"
+      placeholder="Enter your text"
+      class="visible-input"
+    />
+    <input
+      type="text"
+      id="invisible-input"
+      value="You found the clue!"
+      readonly
+      class="invisible-input"
+      style="display: none;"
+    />
+    <button onclick="handleSubmit()" class="submit-button">Submit</button>
+
+    <div id="warning-message" class="warning-message" style="display: none;">
+      Hurry up! Only 20 seconds left!
+    </div>
+
+    <div class="image-container">
+      <!-- Placeholder for dynamic images -->
+      <div class="image-part part-1"></div>
+      <div class="image-part part-2"></div>
+      <div class="image-part part-3"></div>
+      <div class="image-part part-4"></div>
+      <div class="image-part part-5"></div>
+      <div class="image-part part-6"></div>
+      <div class="image-part part-7"></div>
+      <div class="image-part part-8"></div>
+    </div>
+
+    <a id="download-button" href="emblem.jpg" download="emblem.jpg" class="download-button" style="display: none;">
+      Download Full Image
+    </a>
+  </div>
+
+  <script>
+    let clickCount = 0;
+    let round1Time = 120; // 2 minutes in seconds
+    let eventTime = 7200; // 2 hours in seconds
+
+    function updateRound1Timer() {
+      const round1Element = document.getElementById('round1-timer');
+      const minutes = Math.floor(round1Time / 60);
+      const seconds = round1Time % 60;
+      round1Element.textContent = `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+      
+      if (round1Time > 0) {
+        round1Time--;
+      } else {
+        clearInterval(round1Interval);
+      }
+
+      if (round1Time === 20) {
+        document.getElementById('warning-message').style.display = 'block';
+      }
+    }
+
+    function updateCarriedTimer() {
+      const carriedTimerElement = document.getElementById('carried-timer');
+      const hours = Math.floor(eventTime / 3600);
+      const minutes = Math.floor((eventTime % 3600) / 60);
+      const seconds = eventTime % 60;
+      carriedTimerElement.textContent = `Main Event Timer: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+      if (eventTime > 0) {
+        eventTime--;
+      } else {
+        clearInterval(eventTimerInterval);
+      }
+    }
+
+    function handleSubmit() {
+      if (clickCount < 8) {
+        clickCount++;
+        document.querySelector(`.part-${clickCount}`).classList.add('visible');
+      }
+
+      if (clickCount === 8) {
+        document.getElementById('download-button').style.display = 'block';
+      }
+    }
+
+    const round1Interval = setInterval(updateRound1Timer, 1000);
+    const eventTimerInterval = setInterval(updateCarriedTimer, 1000);
+  </script>
+</body>
+</html>
